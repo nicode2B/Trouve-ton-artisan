@@ -1,70 +1,80 @@
-# Getting Started with Create React App
+# Trouve ton artisan – Documentation Projet
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Bienvenue sur le projet Trouve ton artisan, une plateforme de mise en relation entre des clients et des artisans locaux.
+Ce projet est une application web en React (SPA) utilisant React-Bootstrap pour le design et l'interface utilisateur.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## 1. Prérequis du Projet
 
-### `npm start`
+Avant de commencer, assurez-vous que les éléments suivants sont installés sur votre machine :
+* Node.js (version 16.x ou supérieure recommandée).
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 2. Installation du Projet
 
-### `npm test`
+Suivez ces étapes pour installer et initialiser le projet en local.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Étape 2.1 : Cloner le dépôt
 
-### `npm run build`
+```bash
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+git clone [https://github.com/nicode2B/trouve-ton-artisan.git]
+cd Trouve-ton-artisan
+```
+### Étape 2.2 : Installer les dépendances
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+* react-bootstrap pour les composants UI (utilisé dans ContactForm.js, ArtisanCard.js, Header.js, etc.).
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+* react-router-dom pour la gestion des routes (utilisé dans App.js, Home.js, SearchResults.js, etc.).
 
-### `npm run eject`
+* react-icons pour les icônes (utilisé dans ArtisanDetail.js, ArtisanCard.js, Header.js).
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+* react-helmet-async pour la gestion des balises SEO (utilisé dans index.js, LegalPage.js).
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Installez toutes les dépendances listées dans package.json :
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```bash 
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+npm install
+```
 
-## Learn More
+## 3. Lancement de l'Application
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Une fois les dépendances installées, vous pouvez lancer l'application en mode développement.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Étape 3.1 : Lancer le mode développement
 
-### Code Splitting
+Exécutez la commande de lancement
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```bash
 
-### Analyzing the Bundle Size
+npm start
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## 4. Structure des Dossiers Clés
 
-### Making a Progressive Web App
+Voici une brève présentation des dossiers et fichiers principaux :
+| Chemin                   | Description                                                                                                           |
+| ------------------------ | --------------------------------------------------------------------------------------------------------------------- |
+| **src/App.js**           | Fichier de configuration des routes (React Router).                                                                   |
+| **src/index.js**         | Point d'entrée de l'application, inclut l'initialisation de HelmetProvider pour le SEO                                |
+| **src/pages/**           | Contient les composants de page principaux (Home.js, SearchResults.js, ArtisanDetail.js, LegalPage.js, NotFound.js).  |
+| **src/components/**      | Contient les composants réutilisables (Header.js, Footer.js, ContactForm.js, ArtisanCard.js).                         |
+| **src/services/api.js**  | Fonctions de simulation d'appels API pour les données (artisans, catégories).                                         |
+| **src/styles/**          | Contient les styles, notamment custom.scss pour les variables Bootstrap personnalisées.                               |
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## 5. Design et Accessibilité
 
-### Advanced Configuration
+**Composants Utilisés**
+* Composants de Navigation : Header.js et Footer.js.
+* Affichage des Artisans : ArtisanCard.js et ArtisanDetail.js.
+* Formulaires : ContactForm.js utilise des champs avec les attributs id, name, et htmlFor pour assurer une bonne accessibilité et autocomplétion des navigateurs.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+**Accessibilité (WCAG)**
+* Gestion du SEO/Métadonnées : Le composant SEO (via react-helmet-async) est utilisé sur toutes les pages pour les titres et descriptions dynamiques.
+* Formulaires : Les champs dans ContactForm.js utilisent la liaison explicite Form.Label (htmlFor) avec Form.Control (id) pour garantir la lisibilité par les lecteurs d'écran.
+* Images : Toutes les balises <img> et les composants Image de React-Bootstrap incluent des attributs alt pertinents.
 
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 6. Déploiement
