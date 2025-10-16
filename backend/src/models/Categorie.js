@@ -13,8 +13,8 @@ const Categorie = sequelize.define('Categorie', {
     unique: true,
   }
 }, {
-  tableName: 'Categorie', // Assure que Sequelize utilise le nom de table correct
-  timestamps: false // Pas de colonnes createdAt/updatedAt
+  tableName: 'Categorie',
+  timestamps: false
 });
 
 module.exports = Categorie;

@@ -1,19 +1,14 @@
 import axios from 'axios';
 
-// ⚠️ Récupère la clé secrète de l'API définie dans le backend .env
-// Pour un projet React, la variable doit commencer par REACT_APP_
-// Tu DOIS créer un fichier .env à la racine de ton dossier 'frontend'
-// avec la ligne : REACT_APP_API_SECRET_KEY=ta_super_cle_secrete_et_tres_longue_123456789
+// Récupère la clé secrète de l'API définie dans le backend .env
 const API_SECRET_KEY = process.env.REACT_APP_API_SECRET_KEY; 
 
-// URL de base de l'API Node.js
 const API_BASE_URL = 'http://localhost:3001/api'; 
 
 // Instance Axios pour simplifier les requêtes
 const api = axios.create({
   baseURL: API_BASE_URL,
   headers: {
-    // ⚠️ Ajoute la clé secrète dans l'en-tête de chaque requête
     'X-API-KEY': API_SECRET_KEY, 
     'Content-Type': 'application/json',
   },
@@ -28,7 +23,7 @@ export const fetchCategories = async () => {
     return response.data;
   } catch (error) {
     console.error("Erreur lors de la récupération des catégories :", error);
-    return []; // Retourne un tableau vide en cas d'erreur
+    return [];
   }
 };
 
@@ -54,9 +49,8 @@ export const fetchAllArtisans = async () => {
     }
 };
 
-// 3. Récupère la liste des artisans (avec filtre de recherche/catégorie)
+// 3. Récupère la liste des artisans
 export const fetchArtisans = async (query = {}) => {
-    // query peut contenir { categorie: 'Alimentation' } ou { recherche: 'boulanger' }
     try {
         const response = await api.get('/artisans', { params: query });
         return response.data;
@@ -77,12 +71,7 @@ export const fetchArtisanDetail = async (id) => {
     }
 };
 
-// 5. Soumission du formulaire de contact (Simulation)
-// L'API ne gère pas encore l'envoi d'email, nous allons donc simuler cette fonction
 export const submitContactForm = async (artisanEmail, formData) => {
-    // ⚠️ TODO: Implémenter la route d'envoi d'email dans l'API backend
-    
-    // Simulation d'une réponse réussie
     return new Promise(resolve => {
         setTimeout(() => {
             console.log(`Email envoyé à ${artisanEmail} avec les données:`, formData);

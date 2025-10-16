@@ -1,10 +1,8 @@
-// src/components/layout/Footer.js
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Image } from 'react-bootstrap'; 
 import Logo from '../../assets/Logo.png'; 
 
-// Déplacer les données statiques à l'extérieur du composant pour une meilleure performance
 const legalPages = [
     { name: 'Mentions Légales', path: '/mentions-legales' },
     { name: 'Données Personnelles', path: '/donnees-personnelles' },
@@ -17,14 +15,11 @@ const contactInfo = {
     telephone: '+33 (0)4 26 73 40 00'
 };
 
-// Définition des couleurs
 const BACKGROUND_COLOR = "#00497C";
 const TEXT_COLOR = "#F1F8FC";
 const LINE_COLOR = "#384050"; 
 const TITLE_COLOR = "#0074C7";
 
-
-// Style pour la ligne de séparation (1px de hauteur)
 const lineStyle = {
     backgroundColor: LINE_COLOR, 
     height: '2px', 
@@ -33,7 +28,7 @@ const lineStyle = {
 };
 
 const copyrightStyle = {
-    marginTop: '-50px', // Marge négative pour remonter légèrement
+    marginTop: '-50px',
 };
 
 const titleUnderlineStyle = {
@@ -44,30 +39,18 @@ const titleUnderlineStyle = {
 };
 
 const Footer = () => {
-    // Année actuelle pour le copyright
     const currentYear = new Date().getFullYear();
 
     return (
-        // Retire le 'pb-4' pour que la ligne soit collée au bas de la section de contenu
         <footer className="mt-auto pt-5" style={{ backgroundColor: BACKGROUND_COLOR }}> 
             <div className="container" style={{ color: TEXT_COLOR }}>
                 
                 <div className="row">
-                    
-                    {/* Colonne Wrapper (col-10) centrée avec mx-auto pour centrer l'ensemble du contenu */}
                     <div className="col-12 col-lg-10 mx-auto"> 
-
-                        {/* Row interne pour les deux sections principales */}
                         <div className="row pb-4"> 
-                            
-                            {/* Colonne GAUCHE : Pages Légales */}
                             <div className="col-lg-6 col-md-6 mb-4 mb-md-0 text-center">
                                 <h5 style={{ ...titleUnderlineStyle, color: TITLE_COLOR }}>Information Légales</h5>
-                                
-                                {/* 🔑 MODIFICATION : Changement de la structure des liens pour 3 colonnes (40% + 40% + 20%) */}
                                 <div className="d-flex flex-wrap justify-content-between py-4"> 
-                                    
-                                    {/* Colonne 1/3 (40%) : Liens 1 & 2 */}
                                     <div style={{ width: '40%' }}>
                                         <div className="mb-3">
                                             <Link to={legalPages[0].path} className="text-decoration-none" style={{ color: TEXT_COLOR }}>
@@ -80,8 +63,6 @@ const Footer = () => {
                                             </Link>
                                         </div>
                                     </div>
-                                    
-                                    {/* Colonne 2/3 (40%) : Liens 3 & 4 */}
                                     <div style={{ width: '40%' }}>
                                         <div className="mb-3">
                                             <Link to={legalPages[2].path} className="text-decoration-none" style={{ color: TEXT_COLOR }}>
@@ -94,8 +75,6 @@ const Footer = () => {
                                             </Link>
                                         </div>
                                     </div>
-
-                                    {/* 🔑 Colonne 3/3 (20%) : Lien 404 */}
                                     <div style={{ width: '20%' }}>
                                         <div className="mb-3">
                                             <Link to="/404" className="text-decoration-none" style={{ color: TEXT_COLOR,}}>
@@ -105,8 +84,6 @@ const Footer = () => {
                                     </div>
                                 </div>
                             </div>
-    
-                            {/* Colonne DROITE : Adresse et Contact */}
                             <div className="col-lg-6 col-md-6"> 
                                 <div className="text-center"> 
                                     <h5 style={{ ...titleUnderlineStyle, color: TITLE_COLOR }}>Nous Contacter (Lyon)</h5>
@@ -122,9 +99,9 @@ const Footer = () => {
                                     </p>
                                 </div>
                             </div>
-                        </div> {/* Fin de la row interne (Contenu principal) */}
-                    </div> {/* Fin du wrapper col-lg-10 mx-auto */}
-                </div> {/* Fin de la row principale */}
+                        </div>
+                    </div>
+                </div>
             </div>
             
             {/* Ligne de séparation noire */}

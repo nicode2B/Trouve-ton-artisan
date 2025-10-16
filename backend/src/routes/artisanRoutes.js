@@ -1,4 +1,3 @@
-// src/routes/artisanRoutes.js
 const express = require('express');
 const { Artisan, Specialite, Categorie } = require('../models/index');
 const { Op } = require('sequelize');
@@ -11,18 +10,17 @@ router.get('/artisans/top', async (req, res) => {
         const topArtisans = await Artisan.findAll({
             limit: 3,
             where: { top_du_mois: true },
-            // Joindre les données de la Spécialité et de la Catégorie
             include: [{
                 model: Specialite,
                 as: 'Specialite',
                 include: [{
                     model: Categorie,
                     as: 'Categorie',
-                    attributes: ['nom'] // Seulement le nom de la catégorie
+                    attributes: ['nom']
                 }],
-                attributes: ['nom'] // Seulement le nom de la spécialité
+                attributes: ['nom']
             }],
-            attributes: ['id', 'nom', 'note', 'ville'], // Champs pour la Card
+            attributes: ['id', 'nom', 'note', 'ville'],
             order: [['note', 'DESC']]
         });
         res.json(topArtisans);
@@ -35,19 +33,16 @@ router.get('/artisans/top', async (req, res) => {
 // 2. Route pour la liste des artisans (par catégorie OU recherche)
 router.get('/artisans', async (req, res) => {
     const { categorie, recherche } = req.query;
-    
-    // On prépare une clause WHERE pour la recherche de nom
     let whereClause = {};
 
     // 1. Logique de Recherche par Nom (Barre de recherche)
     if (recherche) {
         whereClause.nom = {
-            [Op.like]: `%${recherche}%` // Recherche partielle (LIKE '%texte%')
+            [Op.like]: `%${recherche}%`
         };
     }
 
     // 2. Logique de Filtre par Catégorie (Menu)
-    // On devra filtrer sur le nom de la catégorie, ce qui nécessite une jointure
     let includeClause = [{
         model: Specialite,
         as: 'Specialite',
@@ -60,7 +55,6 @@ router.get('/artisans', async (req, res) => {
     }];
 
     if (categorie) {
-        // Ajout de la condition sur le nom de la Catégorie
         includeClause[0].include[0].where = { nom: categorie };
     }
 
@@ -72,16 +66,13 @@ router.get('/artisans', async (req, res) => {
             order: [['nom', 'ASC']]
         });
         
-        // Sécurité : On retire les artisans qui n'ont pas de catégorie correspondante (si on a filtré)
-        // C'est nécessaire car Sequelize gère mal les conditions WHERE sur les modèles inclus 
-        // dans le cas de relations MANY-TO-ONE sans un JOIN STRICT.
         const filteredArtisans = artisans.filter(a => a.Specialite && a.Specialite.Categorie);
 
         res.json(filteredArtisans);
 
     } catch (error) {
         console.error(error);
-        // Si la requête échoue à cause d'un filtre trop restrictif (aucune ligne), ça peut être 500 ou 200 []
+
         res.status(500).json({ message: 'Erreur lors de la récupération de la liste des artisans.' });
     }
 });
@@ -91,7 +82,6 @@ router.get('/artisans', async (req, res) => {
 router.get('/artisans/:id', async (req, res) => {
     try {
         const artisan = await Artisan.findByPk(req.params.id, {
-            // Joindre la spécialité et la catégorie
             include: [{
                 model: Specialite,
                 as: 'Specialite',
@@ -102,7 +92,7 @@ router.get('/artisans/:id', async (req, res) => {
                     attributes: ['nom']
                 }]
             }],
-            attributes: { exclude: ['specialite_id', 'top_du_mois'] } // Exclure les clés internes
+            attributes: { exclude: ['specialite_id', 'top_du_mois'] }
         });
 
         if (!artisan) {

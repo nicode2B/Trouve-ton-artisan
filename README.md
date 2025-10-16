@@ -77,4 +77,4 @@ Voici une brève présentation des dossiers et fichiers principaux :
 * Formulaires : Les champs dans ContactForm.js utilisent la liaison explicite Form.Label (htmlFor) avec Form.Control (id) pour garantir la lisibilité par les lecteurs d'écran.
 * Images : Toutes les balises <img> et les composants Image de React-Bootstrap incluent des attributs alt pertinents.
 
-## 6. Déploiements
+## 6. Déploiement

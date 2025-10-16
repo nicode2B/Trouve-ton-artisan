@@ -1,11 +1,9 @@
-// frontend/src/pages/ArtisanDetail.js
-
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { Container, Row, Col, Card, Badge, ListGroup } from 'react-bootstrap';
 import { FaMapMarkerAlt, FaStar, FaEnvelope, FaGlobe, FaToolbox } from 'react-icons/fa';
 import { fetchArtisanDetail } from '../services/api'; 
-import ContactForm from '../components/ContactForm'; // << NOUVEL IMPORT
+import ContactForm from '../components/ContactForm';
 import LogoArtisan from '../assets/LogoArtisan.jpg';
 
 const text_color = "#384050";
@@ -56,20 +54,14 @@ const ArtisanDetail = () => {
                     <Card className="shadow-lg border-0 artisan-detail-card mb-5"> 
                         <Card.Body className="p-4 p-md-5 bg-custom-light">
                             
-                            
-                            {/* EN-TÊTE : Spécialité et Note */}
                             <Row className="mb-4 align-items-center border-bottom pb-3">
                                 <Col xs={12} className="mb-4 text-center">
-                                    {/* h1: Réduire la marge du bas (mb-2) pour rapprocher l'image du nom */}
                                     <h1 className="display-4 font-weight-bold mb-5">{artisan.Nom}</h1>
-                                    
-                                    {/* 🔑 IMAGE AJOUTÉE ICI */}
-                                    {/* REMPLACER '/images/image-certifiee.png' par le chemin d'accès réel de votre image. */}
                                     <img 
                                         src={LogoArtisan}
                                         alt={`Logo de certification pour ${artisan.Nom}`} 
-                                        className="d-block mx-auto mb- rounded-5" // d-block assure qu'il prend toute la ligne s'il n'est pas stylisé
-                                        style={{ height: '150px', maxWidth: '100%' }} // Exemple de style pour une petite image
+                                        className="d-block mx-auto mb- rounded-5"
+                                        style={{ height: '150px', maxWidth: '100%' }}
                                     />
                                 </Col>
                                 <Col xs={12} md={9}>
@@ -122,7 +114,6 @@ const ArtisanDetail = () => {
                 
                 {/* Colonne de Droite : Formulaire de Contact */}
                 <Col lg={12} md={10} xs={12}>
-                    {/* Le composant de formulaire est inséré ici, en passant le nom et l'email */}
                     <ContactForm 
                         artisanName={artisan.Nom} 
                         artisanEmail={artisan.Email}

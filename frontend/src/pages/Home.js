@@ -1,5 +1,3 @@
-// src/pages/Home.js
-
 import React, { useState, useEffect } from 'react';
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
@@ -17,12 +15,10 @@ const Home = () => {
     const [topArtisans, setTopArtisans] = useState([]);
 
     const gradientButtonStyle = {
-        // Dégradé de gauche à droite : Vert -> Blanc -> Vert
         backgroundImage: `linear-gradient(to right, ${BACKGROUND_COLOR}, ${GRADIENT_CENTER_COLOR}, ${BACKGROUND_COLOR})`,
-        // Forcer le background (important pour les boutons Bootstrap)
         background: `linear-gradient(to right, ${BACKGROUND_COLOR}, ${GRADIENT_CENTER_COLOR}, ${BACKGROUND_COLOR}) !important`, 
-        color: TEXT_COLOR, // Couleur du texte
-        borderColor: TEXT_COLOR, // Bordure pour délimiter le bouton
+        color: TEXT_COLOR,
+        borderColor: TEXT_COLOR,
         fontWeight: 'bold',
         borderRadius: '50px',
         maxWidth: '300px', 
@@ -30,7 +26,6 @@ const Home = () => {
     };
 
     useEffect(() => {
-        // Chargement des Artisans du Mois
         const loadTopArtisans = async () => {
             const data = await fetchTopArtisans();
             setTopArtisans(data);
@@ -49,16 +44,9 @@ const Home = () => {
             <section className="how-it-works py-5" style={{ backgroundColor: '#82b864' }}>
 
                 <Container>
-                    {/* 🔑 CHANGEMENT : On utilise une Row pour diviser la section en deux colonnes principales */}
                     <Row className="align-items-center" style={{ color: TEXT_COLOR }}> 
-                        
-                        {/* Colonne GAUCHE : Titre et 4 Points alignés verticalement */}
                         <Col lg={7} md={6} className="mb-4 mb-md-0"> 
-                            
-                            {/* Titre aligné à gauche */}
                              <h2 className="text-start mb-5" style={{ color: TEXT_COLOR }}>Comment trouver mon artisan ?</h2>
-                            
-                            {/* 🔑 CHANGEMENT : On supprime la Row interne et on utilise Col xs={12} pour l'alignement vertical */}
                             <Row> 
                                 <Col xs={12} className="mb-4" style={{ color: TEXT_COLOR }}>
                                     <p>1. Choisir la catégorie d'artisanat dans le menu.</p>
@@ -75,7 +63,6 @@ const Home = () => {
                             </Row>
                         </Col>
 
-                        {/* Colonne DROITE : Bouton d'Action */}
                         <Col lg={5} md={6} className="d-flex justify-content-center" >
                             <div className="text-center">
                                 <Link to="/recherche">
@@ -96,24 +83,19 @@ const Home = () => {
                     <Row className="mb-5 gx-5 justify-content-center">
                         {topArtisans.length > 0 ? (
                             topArtisans.map((artisan, index) => { 
-                                
-                                // LOGIQUE DE L'OMBRE BASÉE SUR L'INDEX (répétition du motif tous les 3)
                                 let shadowStyle = {}; 
                                 const offset = '5px';
-                                const position = index % 3; // Utilisation du Modulo 3
+                                const position = index % 3;
                                 
                                 if (position === 0) {
-                                    // Carte 1 (Gauche) : Ombre en bas et à gauche (-X, +Y)
                                     shadowStyle = { boxShadow: `-${offset} ${offset} 0 0 ${SHADOW_COLOR_RGBA}` };
                                 } else if (position === 1) {
-                                    // Carte 2 (Milieu) : Ombre en bas seulement (0, +Y)
                                     shadowStyle = { boxShadow: `0 ${offset} 0 0 ${SHADOW_COLOR_RGBA}` };
                                 } else {
-                                    // Carte 3 (Droite) : Ombre en bas et à droite (+X, +Y)
                                     shadowStyle = { boxShadow: `${offset} ${offset} 0 0 ${SHADOW_COLOR_RGBA}` };
                                 }
                                 
-                                return ( // 🔑 Ajout du return explicite pour retourner le JSX
+                                return (
                                     <Col key={artisan.id} md={6} lg={4} className="mb-4">
                                         <ArtisanCard artisan={artisan} shadowStyle={shadowStyle} />
                                     </Col>

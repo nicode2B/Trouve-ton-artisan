@@ -1,5 +1,3 @@
-// frontend/src/pages/NotFound.js
-
 import React from 'react';
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
@@ -12,20 +10,19 @@ const GRADIENT_CENTER_COLOR = "#F1F8FC";
 const NotFound = () => {
     const imageStyle = {
         maxWidth: '100%',
-        maxHeight: '400px', // Limite la hauteur
+        maxHeight: '400px',
         marginBottom: '20px',
         border: '2px solid #CD2C2E',
         borderRadius: '8px'
     };
 
     const gradientButtonStyle = {
-        // Dégradé de gauche à droite : Vert -> Blanc -> Vert
         backgroundImage: `linear-gradient(to right, ${BACKGROUND_COLOR}, ${GRADIENT_CENTER_COLOR}, ${BACKGROUND_COLOR})`,
         background: `linear-gradient(to right, ${BACKGROUND_COLOR}, ${GRADIENT_CENTER_COLOR}, ${BACKGROUND_COLOR}) !important`,  
-        color: TEXT_COLOR, // Couleur du texte (foncé)
-        borderColor: TEXT_COLOR, // Bordure (foncée)
+        color: TEXT_COLOR,
+        borderColor: TEXT_COLOR,
         fontWeight: 'bold',
-        borderRadius: '50px', // Coins arrondis
+        borderRadius: '50px',
     };
 
     return (
@@ -36,7 +33,7 @@ const NotFound = () => {
                         src={NotFoundImage} 
                         alt="Illustration Page Non Trouvée" 
                         style={imageStyle} 
-                        className="img-fluid" // Classe Bootstrap pour la rendre responsive
+                        className="img-fluid"
                     />
                     <h2 className="display-1 font-weight-bold" style={{ color: TEXT_COLOR }}>Page non trouvée</h2>
                     <p className="lead mb-5">
