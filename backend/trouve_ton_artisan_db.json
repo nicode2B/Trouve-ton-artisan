@@ -1,0 +1,189 @@
+[
+    {
+        "Nom": "Boucherie Dumont",
+        "Spécialité": "Boucher",
+        "Note": "4.5",
+        "Ville": "Lyon",
+        "A propos": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus eleifend ante sem, id volutpat massa fermentum nec. Praesent volutpat scelerisque mauris, quis sollicitudin tellus sollicitudin.",
+        "Email": "boucherie.dumond@gmail.com",
+        "Site Web": "",
+        "Catégorie": "Alimentation",
+        "Top": "FALSE"
+    },
+    {
+        "Nom": "Au pain chaud",
+        "Spécialité": "Boulanger",
+        "Note": "4.8",
+        "Ville": "Montélimar",
+        "A propos": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus eleifend ante sem, id volutpat massa fermentum nec. Praesent volutpat scelerisque mauris, quis sollicitudin tellus sollicitudin.",
+        "Email": "aupainchaud@hotmail.com",
+        "Site Web": "",
+        "Catégorie": "Alimentation",
+        "Top": "TRUE"
+    },
+    {
+        "Nom": "Chocolaterie Labbé",
+        "Spécialité": "Chocolatier",
+        "Note": "4.9",
+        "Ville": "Lyon",
+        "A propos": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus eleifend ante sem, id volutpat massa fermentum nec. Praesent volutpat scelerisque mauris, quis sollicitudin tellus sollicitudin.",
+        "Email": "chocolaterie-labbe@gmail.com",
+        "Site Web": "https://chocolaterie-labbe.fr",
+        "Catégorie": "Alimentation",
+        "Top": "TRUE"
+    },
+    {
+        "Nom": "Traiteur Truchon",
+        "Spécialité": "Traiteur",
+        "Note": "4.1",
+        "Ville": "Lyon",
+        "A propos": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus eleifend ante sem, id volutpat massa fermentum nec. Praesent volutpat scelerisque mauris, quis sollicitudin tellus sollicitudin.",
+        "Email": "contact@truchon-traiteur.fr",
+        "Site Web": "https://truchon-traiteur.fr",
+        "Catégorie": "Alimentation",
+        "Top": "FALSE"
+    },
+    {
+        "Nom": "Orville Salmons",
+        "Spécialité": "Chauffagiste",
+        "Note": "5.0",
+        "Ville": "Evian",
+        "A propos": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus eleifend ante sem, id volutpat massa fermentum nec. Praesent volutpat scelerisque mauris, quis sollicitudin tellus sollicitudin.",
+        "Email": "o-salmons@live.com",
+        "Site Web": "",
+        "Catégorie": "Bâtiment",
+        "Top": "TRUE"
+    },
+    {
+        "Nom": "Mont Blanc Eléctricité",
+        "Spécialité": "Electricien",
+        "Note": "4.5",
+        "Ville": "Chamonix",
+        "A propos": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus eleifend ante sem, id volutpat massa fermentum nec. Praesent volutpat scelerisque mauris, quis sollicitudin tellus sollicitudin.",
+        "Email": "contact@mont-blanc-electricite.com",
+        "Site Web": "https://mont-blanc-electricite.com",
+        "Catégorie": "Bâtiment",
+        "Top": "FALSE"
+    },
+    {
+        "Nom": "Boutot & fils",
+        "Spécialité": "Menuisier",
+        "Note": "4.7",
+        "Ville": "Bourg-en-bresse",
+        "A propos": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus eleifend ante sem, id volutpat massa fermentum nec. Praesent volutpat scelerisque mauris, quis sollicitudin tellus sollicitudin.",
+        "Email": "boutot-menuiserie@gmail.com",
+        "Site Web": "https://boutot-menuiserie.com",
+        "Catégorie": "Bâtiment",
+        "Top": "FALSE"
+    },
+    {
+        "Nom": "Vallis Bellemare",
+        "Spécialité": "Plombier",
+        "Note": "4.0",
+        "Ville": "Vienne",
+        "A propos": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus eleifend ante sem, id volutpat massa fermentum nec. Praesent volutpat scelerisque mauris, quis sollicitudin tellus sollicitudin.",
+        "Email": "v.bellemare@gmail.com",
+        "Site Web": "https://plomberie-bellemare.com",
+        "Catégorie": "Bâtiment",
+        "Top": "FALSE"
+    },
+    {
+        "Nom": "Claude Quinn",
+        "Spécialité": "Bijoutier",
+        "Note": "4.2",
+        "Ville": "Aix-les-bains",
+        "A propos": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus eleifend ante sem, id volutpat massa fermentum nec. Praesent volutpat scelerisque mauris, quis sollicitudin tellus sollicitudin.",
+        "Email": "claude.quinn@gmail.com",
+        "Site Web": "",
+        "Catégorie": "Fabrication",
+        "Top": "FALSE"
+    },
+    {
+        "Nom": "Amitee Lécuyer",
+        "Spécialité": "Couturier",
+        "Note": "4.5",
+        "Ville": "Annecy",
+        "A propos": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus eleifend ante sem, id volutpat massa fermentum nec. Praesent volutpat scelerisque mauris, quis sollicitudin tellus sollicitudin.",
+        "Email": "a.amitee@hotmail.com",
+        "Site Web": "https://lecuyer-couture.com",
+        "Catégorie": "Fabrication",
+        "Top": "FALSE"
+    },
+    {
+        "Nom": "Ernest Carignan",
+        "Spécialité": "Ferronier",
+        "Note": "5.0",
+        "Ville": "Le Puy-en-Velay",
+        "A propos": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus eleifend ante sem, id volutpat massa fermentum nec. Praesent volutpat scelerisque mauris, quis sollicitudin tellus sollicitudin.",
+        "Email": "e-carigan@hotmail.com",
+        "Site Web": "",
+        "Catégorie": "Fabrication",
+        "Top": "FALSE"
+    },
+    {
+        "Nom": "Royden Charbonneau",
+        "Spécialité": "Coiffeur",
+        "Note": "3.8",
+        "Ville": "Saint-Priest",
+        "A propos": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus eleifend ante sem, id volutpat massa fermentum nec. Praesent volutpat scelerisque mauris, quis sollicitudin tellus sollicitudin.",
+        "Email": "r.charbonneau@gmail.com",
+        "Site Web": "",
+        "Catégorie": "Services",
+        "Top": "FALSE"
+    },
+    {
+        "Nom": "Leala Dennis",
+        "Spécialité": "Coiffeur",
+        "Note": "3.8",
+        "Ville": "Chambéry",
+        "A propos": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus eleifend ante sem, id volutpat massa fermentum nec. Praesent volutpat scelerisque mauris, quis sollicitudin tellus sollicitudin.",
+        "Email": "l.dennos@hotmail.fr",
+        "Site Web": "https://coiffure-leala-chambery.fr",
+        "Catégorie": "Services",
+        "Top": "FALSE"
+    },
+    {
+        "Nom": "C'est sup'hair",
+        "Spécialité": "Coiffeur",
+        "Note": "4.1",
+        "Ville": "Romans-sur-Isère",
+        "A propos": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus eleifend ante sem, id volutpat massa fermentum nec. Praesent volutpat scelerisque mauris, quis sollicitudin tellus sollicitudin.",
+        "Email": "sup-hair@gmail.com",
+        "Site Web": "https://sup-hair.fr",
+        "Catégorie": "Services",
+        "Top": "FALSE"
+    },
+    {
+        "Nom": "Le monde des fleurs",
+        "Spécialité": "Fleuriste",
+        "Note": "4.6",
+        "Ville": "Annonay",
+        "A propos": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus eleifend ante sem, id volutpat massa fermentum nec. Praesent volutpat scelerisque mauris, quis sollicitudin tellus sollicitudin.",
+        "Email": "contact@le-monde-des-fleurs-annonay.fr",
+        "Site Web": "https://le-monde-des-fleurs-annonay.fr",
+        "Catégorie": "Services",
+        "Top": "FALSE"
+    },
+    {
+        "Nom": "Valérie Laderoute",
+        "Spécialité": "Toiletteur",
+        "Note": "4.5",
+        "Ville": "Valence",
+        "A propos": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus eleifend ante sem, id volutpat massa fermentum nec. Praesent volutpat scelerisque mauris, quis sollicitudin tellus sollicitudin.",
+        "Email": "v-laredoute@gmail.com",
+        "Site Web": "",
+        "Catégorie": "Services",
+        "Top": "FALSE"
+    },
+    {
+        "Nom": "CM Graphisme",
+        "Spécialité": "Webdesign",
+        "Note": "4.4",
+        "Ville": "Valence",
+        "A propos": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus eleifend ante sem, id volutpat massa fermentum nec. Praesent volutpat scelerisque mauris, quis sollicitudin tellus sollicitudin.",
+        "Email": "contact@cm-graphisme.com",
+        "Site Web": "https://cm-graphisme.com",
+        "Catégorie": "Services",
+        "Top": "FALSE"
+    }
+]

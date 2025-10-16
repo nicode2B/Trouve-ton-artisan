@@ -1,0 +1,89 @@
+// src/styles/custom.scss
+
+// ===========================================
+// 1. RÈGLES @USE (DOIVENT ÊTRE EN TÊTE)
+// ===========================================
+
+// 🔑 ORDRE CORRIGÉ : functions, mixins, puis variables.
+
+
+
+// Définition des couleurs personnalisées
+$primary: #008779;    
+$secondary: #82B864;
+$dark: #384050; 
+$white: #FFFFFF;
+$info: #17A2B8; // Ajoutez toutes les autres couleurs ici
+$success: #28A745;
+$warning: #FFC107;
+$danger: #DC3545;
+$light: #F2F2F2;
+$green-color: #82B864; // Votre vert
+$white-center: #F1F8FC;
+$bg-custom-light: #F1F8FC;
+
+
+// Variables de police (elles sont désormais définies grâce à l'import de variables)
+$font-family-base:'Graphik', Arial, sans-serif; 
+$headings-font-family:'Graphik', Arial, sans-serif;
+
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/mixins";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/bootstrap";
+
+.bg-custom-light {
+    background-color: $white-center !important;
+}
+// ===========================================
+// 3. IMPORTATION FINALE & RÈGLES CSS
+// ===========================================
+
+// Importation du corps de Bootstrap
+
+
+// Styles généraux pour le corps (Règles CSS normales)
+body {
+    color: $dark; 
+    background-color: $white;
+    // La police Graphik est définie dans $font-family-base (et chargée via fonts.css)
+    font-family: 'Graphik', Arial, sans-serif !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: $dark; 
+    font-family: 'Graphik', Arial, sans-serif !important;
+}
+
+.artisan-detail-card {
+    box-shadow: -5px 5px 8px 0px rgba(130, 184, 100, 0.3) !important;
+    border: 1px solid #384050 !important;
+    border-color: #384050 !important;
+    border-radius: 40px;
+    overflow: hidden;
+}
+
+.btn-gradient-green {
+    // 🔑 Le dégradé de gauche à droite : Vert -> Blanc -> Vert
+    background-image: linear-gradient(to right, $green-color, $white-center, $green-color) !important;
+    
+    // Couleur du texte (le $dark mis à jour est #384050)
+    color: $dark !important; 
+    
+    // Bordure pour délimiter le bouton
+    border-color: $dark !important; 
+    
+    font-weight: bold;
+    // Coins arrondis pour un look plus doux
+    border-radius: 50px !important; 
+    max-width: 500px;
+}
+
+.border-dark-important {
+    // Utilise $dark (#384050) de vos variables
+    border-color: $dark !important; 
+    
+    // Assurez-vous d'écraser la couleur de bordure de l'alerte Bootstrap
+    // en ciblant aussi la bordure du conteneur parent (si nécessaire)
+    border: 1px solid $dark !important; 
+}
