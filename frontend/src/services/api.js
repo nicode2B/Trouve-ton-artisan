@@ -1,5 +1,4 @@
-import { ARTISANS } from '../data/artisansData'; 
-import { CATEGORIES } from '../data/categoriesData';
+import { ARTISANS } from '../data/artisansdata'; 
 
 const simulateDelay = (ms = 100) => new Promise(resolve => setTimeout(resolve, ms));
 
