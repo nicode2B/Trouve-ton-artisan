@@ -55,8 +55,14 @@ export const fetchArtisans = async (query = {}) => {
 
 export const fetchArtisanDetail = async (id) => {
   try {
+    if (!id) {
+      console.warn("Aucun ID fourni à fetchArtisanDetail");
+      return null;
+    }
+
     await simulateDelay();
     const artisan = artisansData.find(a => a.id.toString() === id.toString());
+
     if (artisan) return artisan;
     console.warn(`Artisan avec l'ID ${id} non trouvé localement.`);
     return null;
