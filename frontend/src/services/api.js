@@ -1,28 +1,15 @@
-import axios from 'axios';
+import { ARTISANS } from '../data/artisansData'; 
+import { CATEGORIES } from '../data/categoriesData';
 
-// Récupère la clé secrète de l'API définie dans le backend .env
-const API_SECRET_KEY = process.env.REACT_APP_API_SECRET_KEY; 
-
-const API_BASE_URL = 'http://localhost:3001/api'; 
-
-// Instance Axios pour simplifier les requêtes
-const api = axios.create({
-  baseURL: API_BASE_URL,
-  headers: {
-    'X-API-KEY': API_SECRET_KEY, 
-    'Content-Type': 'application/json',
-  },
-});
-
-// --- Fonctions d'appel API ---
+const simulateDelay = (ms = 100) => new Promise(resolve => setTimeout(resolve, ms));
 
 // 1. Récupère la liste des catégories pour le menu
 export const fetchCategories = async () => {
   try {
-    const response = await api.get('/categories');
-    return response.data;
+    await simulateDelay();
+    return CATEGORIES;
   } catch (error) {
-    console.error("Erreur lors de la récupération des catégories :", error);
+    console.error("Erreur lors de la récupération des catégories locales :", error);
     return [];
   }
 };
@@ -30,32 +17,37 @@ export const fetchCategories = async () => {
 // 2. Récupère les 3 artisans du mois
 export const fetchTopArtisans = async () => {
     try {
-        const response = await api.get('/artisans/top');
-        return response.data;
+        await simulateDelay();
+        return ARTISANS.slice(0, 3);
     } catch (error) {
-        console.error("Erreur lors de la récupération des top artisans :", error);
+        console.error("Erreur lors de la récupération des top artisans locaux :", error);
         return [];
     }
 };
 
-// Nouvelle fonction pour récupérer TOUS les artisans
+//fonction pour récupérer TOUS les artisans
 export const fetchAllArtisans = async () => {
     try {
-        const response = await api.get('/artisans'); 
-        return response.data;
+        await simulateDelay();
+        return ARTISANS; 
     } catch (error) {
-        console.error("Erreur lors de la récupération de tous les artisans:", error);
+        console.error("Erreur lors de la récupération de tous les artisans locaux:", error);
         return [];
     }
 };
 
-// 3. Récupère la liste des artisans
 export const fetchArtisans = async (query = {}) => {
     try {
-        const response = await api.get('/artisans', { params: query });
-        return response.data;
+        await simulateDelay();
+        let filteredArtisans = ARTISANS;
+        
+        if (query.category) {
+            filteredArtisans = filteredArtisans.filter(a => a.Catégorie === query.category);
+        }
+        
+        return filteredArtisans;
     } catch (error) {
-        console.error("Erreur lors de la récupération des artisans :", error);
+        console.error("Erreur lors de la récupération des artisans locaux :", error);
         return [];
     }
 };
@@ -63,10 +55,17 @@ export const fetchArtisans = async (query = {}) => {
 // 4. Récupère les détails d'un artisan
 export const fetchArtisanDetail = async (id) => {
     try {
-        const response = await api.get(`/artisans/${id}`);
-        return response.data;
+        await simulateDelay();
+        const artisan = ARTISANS.find(a => a.id.toString() === id.toString()); 
+        
+        if (artisan) {
+            return artisan;
+        } else {
+            console.warn(`Artisan avec l'ID ${id} non trouvé localement.`);
+            return null;
+        }
     } catch (error) {
-        console.error(`Erreur lors de la récupération de l'artisan ${id} :`, error);
+        console.error(`Erreur lors de la récupération de l'artisan ${id} localement :`, error);
         return null;
     }
 };
@@ -74,7 +73,7 @@ export const fetchArtisanDetail = async (id) => {
 export const submitContactForm = async (artisanEmail, formData) => {
     return new Promise(resolve => {
         setTimeout(() => {
-            console.log(`Email envoyé à ${artisanEmail} avec les données:`, formData);
+            console.log(`[SIMULATION] Email envoyé à ${artisanEmail} avec les données:`, formData);
             resolve({ success: true, message: "Votre message a été envoyé avec succès !" });
         }, 1000);
     });
