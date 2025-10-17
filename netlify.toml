@@ -1,7 +1,7 @@
 [build]
   # Désactive l'installation automatique par Netlify
   base = "frontend"
-  publish = "frontend/build" 
+  publish = "build" 
   command = "npm install --legacy-peer-deps && npm run build"
   
 [build.environment]
