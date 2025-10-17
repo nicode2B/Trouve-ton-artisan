@@ -53,21 +53,36 @@ export const fetchArtisans = async (query = {}) => {
   }
 };
 
-export const fetchArtisanDetail = async (id) => {
+export const fetchArtisanDetail = async (idParam) => {
   try {
-    if (!id) {
+    await simulateDelay();
+
+    // 1) ID absent → on sort proprement
+    if (idParam === undefined || idParam === null || idParam === "") {
       console.warn("Aucun ID fourni à fetchArtisanDetail");
       return null;
     }
 
-    await simulateDelay();
-    const artisan = artisansData.find(a => a.id.toString() === id.toString());
+    const idStr = String(idParam);
+
+    // 2) Recherche tolérante: id, ID, Id (et on protège a et a.id)
+    const artisan =
+      artisansData.find(a => a && (a.id !== undefined) && String(a.id) === idStr) ||
+      artisansData.find(a => a && (a.ID !== undefined) && String(a.ID) === idStr) ||
+      artisansData.find(a => a && (a.Id !== undefined) && String(a.Id) === idStr);
 
     if (artisan) return artisan;
-    console.warn(`Artisan avec l'ID ${id} non trouvé localement.`);
+
+    // (optionnel) si tu passes un slug au lieu d’un id:
+    const bySlug = artisansData.find(a =>
+      a && a.slug && String(a.slug).toLowerCase() === idStr.toLowerCase()
+    );
+    if (bySlug) return bySlug;
+
+    console.warn(`Artisan avec l'identifiant "${idStr}" non trouvé localement.`);
     return null;
   } catch (error) {
-    console.error(`Erreur lors de la récupération de l'artisan ${id} localement :`, error);
+    console.error(`Erreur lors de la récupération de l'artisan ${idParam} localement :`, error);
     return null;
   }
 };
