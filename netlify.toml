@@ -1,0 +1,10 @@
+[build]
+  # Désactive l'installation automatique par Netlify
+  base = "frontend"
+  publish = "frontend/build" 
+  command = "npm install --legacy-peer-deps && npm run build"
+  
+[build.environment]
+  # Empêche l'exécution de l'installation par défaut.
+  NPM_FLAGS = "--legacy-peer-deps" 
+  # Le NVM_VERSION n'est plus nécessaire car Netlify utilise Node v22.20.0 (compatible).
