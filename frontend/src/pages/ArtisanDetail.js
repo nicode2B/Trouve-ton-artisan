@@ -1,128 +1,78 @@
-import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import { Container, Row, Col, Card, Badge, ListGroup } from 'react-bootstrap';
-import { FaMapMarkerAlt, FaStar, FaEnvelope, FaGlobe, FaToolbox } from 'react-icons/fa';
-import { fetchArtisanDetail } from '../services/api'; 
-import ContactForm from '../components/ContactForm';
-import LogoArtisan from '../assets/LogoArtisan.jpg';
-
-const text_color = "#384050";
-const icon_color = "#82B864";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { fetchArtisanDetail } from "../services/api";
 
 const ArtisanDetail = () => {
-    const { id } = useParams(); 
-    
-    const [artisan, setArtisan] = useState(null);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(false);
+  const { id } = useParams(); // Récupère l'ID depuis l'URL
+  const [artisan, setArtisan] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-    useEffect(() => {
-        const loadArtisan = async () => {
-            setLoading(true);
-            try {
-                const data = await fetchArtisanDetail(id); 
-                
-                if (data && data.id) {
-                    setArtisan(data);
-                } else {
-                    setError(true);
-                }
-            } catch (err) {
-                console.error("Erreur de chargement des détails de l'artisan:", err);
-                setError(true);
-            } finally {
-                setLoading(false);
-            }
-        };
+  useEffect(() => {
+    const loadArtisan = async () => {
+      try {
+        if (!id) {
+          setError("Aucun identifiant fourni pour l'artisan.");
+          setLoading(false);
+          return;
+        }
 
-        loadArtisan();
-    }, [id]);
+        const data = await fetchArtisanDetail(id);
 
-    if (loading) {
-        return <div className="text-center text-xl mt-8">Chargement des détails...</div>;
-    }
-    
-    if (error || !artisan) {
-        return <div className="text-center text-xl mt-8 text-danger">Désolé, l'artisan n'a pas été trouvé.</div>;
-    }
+        if (data) {
+          setArtisan(data);
+        } else {
+          setError("Aucun artisan trouvé pour cet identifiant.");
+        }
+      } catch (err) {
+        console.error("Erreur lors du chargement de l'artisan :", err);
+        setError("Impossible de charger les informations de l'artisan.");
+      } finally {
+        setLoading(false);
+      }
+    };
 
-    return (
-        <Container className="py-5">
-            <Row className="justify-content-center">
-                {/* Colonne de Gauche : Détails de l'artisan */}
-                <Col lg={8} md={10} xs={12}>
-                    <Card className="shadow-lg border-0 artisan-detail-card mb-5"> 
-                        <Card.Body className="p-4 p-md-5 bg-custom-light">
-                            
-                            <Row className="mb-4 align-items-center border-bottom pb-3">
-                                <Col xs={12} className="mb-4 text-center">
-                                    <h1 className="display-4 font-weight-bold mb-5">{artisan.Nom}</h1>
-                                    <img 
-                                        src={LogoArtisan}
-                                        alt={`Logo de certification pour ${artisan.Nom}`} 
-                                        className="d-block mx-auto mb- rounded-5"
-                                        style={{ height: '150px', maxWidth: '100%' }}
-                                    />
-                                </Col>
-                                <Col xs={12} md={9}>
-                                <h3 className="text-muted">{artisan.Spécialité}</h3>
-                                    <Badge 
-                                        bg="info" 
-                                        className="text-uppercase p-2"
-                                    >
-                                        <FaToolbox className="me-2" /> {artisan.Catégorie}
-                                    </Badge>
-                                    
-                                </Col>
-                                <Col xs={12} md={3} className="text-md-end mt-3 mt-md-0">
-                                    <h2 style={{ color: text_color }}>
-                                        <FaStar style={{ color: icon_color }} /> {artisan.Note}
-                                    </h2>
-                                    {artisan.Top === 'TRUE' && (
-                                        <Badge bg="success" className="p-2">Artisan du Mois</Badge>
-                                    )}
-                                </Col>
-                            </Row>
-                            
-                            {/* SECTION À PROPOS */}
-                            <h4 className="mb-3 text-dark">À Propos</h4>
-                            <p className="lead mb-5">{artisan['A propos']}</p>
-                            
-                            {/* INFORMATIONS DE CONTACT */}
-                            <h4 className="mb-3 text-dark">Informations de Contact</h4>
-                            <ListGroup variant="flush" className="mb-3">
-                                <ListGroup.Item>
-                                    <FaMapMarkerAlt className="me-3 text-secondary" /> 
-                                    Ville : {artisan.Ville}
-                                </ListGroup.Item>
-                                {artisan.Email && (
-                                    <ListGroup.Item>
-                                        <FaEnvelope className="me-3 text-secondary" /> 
-                                        Email : <a href={`mailto:${artisan.Email}`}>{artisan.Email}</a>
-                                    </ListGroup.Item>
-                                )}
-                                {artisan['Site Web'] && (
-                                    <ListGroup.Item>
-                                        <FaGlobe className="me-3 text-secondary" /> 
-                                        Site Web : <a href={artisan['Site Web']} target="_blank" rel="noopener noreferrer">{artisan['Site Web']}</a>
-                                    </ListGroup.Item>
-                                )}
-                            </ListGroup>
-                        </Card.Body>
-                    </Card>
-                </Col>
-                
-                {/* Colonne de Droite : Formulaire de Contact */}
-                <Col lg={12} md={10} xs={12}>
-                    <ContactForm 
-                        artisanName={artisan.Nom} 
-                        artisanEmail={artisan.Email}
-                        className="artisan-detail-card bg-custom-light"
-                    />
-                </Col>
-            </Row>
-        </Container>
-    );
+    loadArtisan();
+  }, [id]);
+
+  // État de chargement
+  if (loading) {
+    return <p className="text-center mt-10 text-gray-600">Chargement de l'artisan...</p>;
+  }
+
+  // Erreur
+  if (error) {
+    return <p className="text-center mt-10 text-red-500">{error}</p>;
+  }
+
+  // Si aucun artisan trouvé
+  if (!artisan) {
+    return <p className="text-center mt-10 text-gray-500">Aucun artisan trouvé.</p>;
+  }
+
+  // Affichage de l'artisan
+  return (
+    <div className="max-w-2xl mx-auto mt-10 p-6 bg-white shadow-lg rounded-2xl">
+      <h2 className="text-3xl font-semibold text-center text-blue-700 mb-4">
+        {artisan.nom}
+      </h2>
+
+      {artisan.image && (
+        <img
+          src={artisan.image}
+          alt={artisan.nom}
+          className="w-full h-64 object-cover rounded-lg mb-6"
+        />
+      )}
+
+      <div className="space-y-2 text-gray-700">
+        <p><strong>Métier :</strong> {artisan.metier}</p>
+        <p><strong>Catégorie :</strong> {artisan.categorie || artisan.Catégorie}</p>
+        <p><strong>Ville :</strong> {artisan.ville}</p>
+        <p><strong>Description :</strong> {artisan.description}</p>
+      </div>
+    </div>
+  );
 };
 
 export default ArtisanDetail;
