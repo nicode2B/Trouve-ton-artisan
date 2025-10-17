@@ -5,6 +5,14 @@ Ce projet est une application web en React (SPA) utilisant React-Bootstrap pour 
 
 ---
 
+## Déploiement
+
+**Liens**
+* Render : https://trouve-ton-artisan-pf5e.onrender.com
+* Netlify : https://trouve-ton-artisan01.netlify.app/
+
+---
+
 ## 1. Prérequis du Projet
 
 Avant de commencer, assurez-vous que les éléments suivants sont installés sur votre machine :
@@ -40,6 +48,8 @@ Installez toutes les dépendances listées dans package.json :
 npm install
 ```
 
+---
+
 ## 3. Lancement de l'Application
 
 Une fois les dépendances installées, vous pouvez lancer l'application en mode développement.
@@ -53,6 +63,8 @@ Exécutez la commande de lancement
 npm start
 ```
 
+---
+
 ## 4. Structure des Dossiers Clés
 
 Voici une brève présentation des dossiers et fichiers principaux :
@@ -64,6 +76,8 @@ Voici une brève présentation des dossiers et fichiers principaux :
 | **src/components/**      | Contient les composants réutilisables (Header.js, Footer.js, ContactForm.js, ArtisanCard.js).                         |
 | **src/services/api.js**  | Fonctions de simulation d'appels API pour les données (artisans, catégories).                                         |
 | **src/styles/**          | Contient les styles, notamment custom.scss pour les variables Bootstrap personnalisées.                               |
+
+---
 
 ## 5. Design et Accessibilité
 
@@ -77,4 +91,4 @@ Voici une brève présentation des dossiers et fichiers principaux :
 * Formulaires : Les champs dans ContactForm.js utilisent la liaison explicite Form.Label (htmlFor) avec Form.Control (id) pour garantir la lisibilité par les lecteurs d'écran.
 * Images : Toutes les balises <img> et les composants Image de React-Bootstrap incluent des attributs alt pertinents.
 
-## 6. Déploiement
+---
