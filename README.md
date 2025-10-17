@@ -52,8 +52,6 @@ npm install
 
 ## 3. Lancement de l'Application
 
-Une fois les dépendances installées, vous pouvez lancer l'application en mode développement.
-
 ### Étape 3.1 : Lancer le mode développement
 
 Exécutez la commande de lancement
@@ -67,7 +65,7 @@ npm start
 
 ## 4. Structure des Dossiers Clés
 
-Voici une brève présentation des dossiers et fichiers principaux :
+Voici une présentation des dossiers et fichiers principaux :
 | Chemin                   | Description                                                                                                           |
 | ------------------------ | --------------------------------------------------------------------------------------------------------------------- |
 | **src/App.js**           | Fichier de configuration des routes (React Router).                                                                   |
